@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;400;700&display=swap');
+:root {
+    --accent-color:#D26890;
+}
+
+* {
+    background-origin: border-box;
+    margin: 0;
+}
+
+body {
+    background: url(bg-d.jpg) no-repeat center fixed;
+    background-color: #11111188;
+    background-blend-mode: darken;
+    background-size: contain;
+    color: #ccc;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    text-align: right;
+}
+
+/* TYPOGRAPHY */
+.title-home, 
+.hero,
+h1, 
+h2, h3 {
+    font-family: 'Libre Baskerville', serif;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+h2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+h3 {
+    margin-bottom: 12px;
+}
+
+.hero {
+    text-shadow: #000 0px 0px 10px;
+} 
+
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.4s;
+}
+
+a:hover, a:focus {
+    color: var(--accent-color);
+}
+
+
+/* IMAGES */
+
+img {
+    max-width: 100%;
+}
+
+
+/* LAYOUT */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 90vh;
+    margin-right: 40px;
+}
+.hero h1 {
+    margin:0;
+}
+.about, 
+.listen, 
+.calendar-page, 
+.contact {
+    background-color:#111111cc;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.about-text {
+    line-height: 1.7em;
+    color: #fff;
+}
+
+.about-text p {
+    margin: 12px;
+}
+
+.listen, 
+.contact {
+    flex-direction: column;
+    text-align: center;
+}
+
+.calendar-page{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+}
+
+article {
+    margin: 50px;
+}
+.youtube {
+    text-align: center;
+    max-width: 800px;
+}
+iframe {
+    margin: 30px;
+    border-radius: 5px;
+    border: 3px solid #000;
+}
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #111;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #fff;
+    transform: translateX(100%);
+    transition: transform 250ms ease-in-out; 
+}
+
+nav a {
+    color: inherit;
+    padding: 20px;
+    text-transform: uppercase;
+    font-size:large;
+}
+
+nav a:hover{
+    background-color: #000;
+}
+
+.nav-toggle {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    padding: 1em .5em; 
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-open nav {
+    transform: translateX(0%);
+}
+
+.nav-open .nav-toggle {
+    position: fixed;
+}
+
+/* HAMBURGER  */
+.hamburger {
+    display: block;
+    position: relative;
+    z-index: 1000;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    background: #fff;
+    width: 2.5em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.hamburger::before { top: 9px; }
+.hamburger::after { bottom: 9px; }
+
+.nav-open .hamburger {
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(90deg) translateX(-9px);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+
+/* CALENDAR */
+
+.calendar {
+    display: flex;
+    margin: 30px 0;
+    align-items: center;
+    background-color:#000;
+    border-radius: 5px;
+    padding: 20px;
+    line-height: 1.7em;
+    width: 100%;
+}
+
+.datetag {
+    padding: 8px;
+    margin: 30px 45px 20px 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    color: var(--accent-color);
+    text-align: center;
+    height: fit-content;
+}
+.date-month,
+.date-day,
+.date-time {
+    margin: 2px;
+}
+.date-day {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .about {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+@media screen and (max-width: 800px) {
+     body::after{
+      content:"";
+      position:fixed; /* stretch a fixed position to the whole screen */
+      top:0;
+      height:100vh; /* fix for mobile browser address bar appearing disappearing */
+      left:0;
+      right:0;
+      z-index:-1; /* needed to keep in the background */
+      background: url(bg-d.jpg) center center;
+      background-size: cover;
+      }
+
+    .datetag {
+        margin: 20px;
+        line-height: 1;
+    }
+    .date-month,
+    .date-time {
+        font-size:0.7em;
+    }
+    .about, 
+    .listen, 
+    .calendar-page, 
+    .contact {
+        margin: 0;
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar {
+        width: 80%;
+    }
+    .about-img {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+        margin-top: 30px;
+    }
+}
