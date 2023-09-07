@@ -18,6 +18,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+body::before {
+    background-color: #111;
+}
+
 .header {
     text-align: right;
 }
